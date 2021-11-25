@@ -5,7 +5,7 @@ import pandas as pd
 import pywt
 import sys
 
-path = 'mitbih_dataset/'
+path = 'dataset/'
 csv_path = path + '115.csv'
 annotation_path = path + '115annotations.txt'
 df = pd.read_csv(csv_path,)
