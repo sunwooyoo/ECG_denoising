@@ -31,7 +31,7 @@ def fir_filtered_data(data, h, shift = True):
     y = lfilter(h, [1.0], data) if shift else signal.filtfilt(h, [1.0], data)
     return y
 
-path = '/home/swyoo/bnn_ISOCC/mitbih_database/'
+path = 'dataset/'
 csv_path = path + '115.csv'
 annotation_path = path + '115annotations.txt'
 df = pd.read_csv(csv_path,)
