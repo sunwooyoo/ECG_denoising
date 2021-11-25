@@ -35,7 +35,7 @@ def filtered_data(data,b,a):
 #notch : 50
 #filter order 2
 
-path = '/home/swyoo/bnn_ISOCC/mitbih_database/'
+path = 'dataset/'
 csv_path = path + '115.csv'
 annotation_path = path + '115annotations.txt'
 df = pd.read_csv(csv_path,)
