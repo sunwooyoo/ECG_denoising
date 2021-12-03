@@ -45,8 +45,8 @@ cA8,d8,d7,d6,d5,d4,d3 ,cD2, cD1 = coeffs
 
 
 for i in range(0, len(coeffs)):
-    
     plt.subplot(maxlev+1, 1, i+1)
+    plt.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=None, hspace=1)
     plt.plot(coeffs[i])
 
 
