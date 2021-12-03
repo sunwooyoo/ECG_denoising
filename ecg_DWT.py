@@ -4,8 +4,14 @@ import numpy as np
 import pandas as pd
 import pywt
 import sys
+import argparse
 
-path = 'dataset/'
+parser = argparse.ArgumentParser(description='...')
+parser.add_argument('-f','--file', nargs='+', help='<Required> Set flag', required=True)
+args = parser.parse_args()
+
+
+path = '/home/swyoo/bnn_ISOCC/mitbih_database/'
 csv_path = path + '115.csv'
 annotation_path = path + '115annotations.txt'
 df = pd.read_csv(csv_path,)
@@ -27,10 +33,13 @@ for i in range(1, len(coeffs)):
     coeffs[i] = pywt.threshold(coeffs[i], threshold*max(coeffs[i]), 'soft')
     plt.plot(coeffs[i])
 
-
-coeffs[0] = np.zeros(coeffs[0].shape)
-coeffs[-1] = np.zeros(coeffs[-1].shape)
-coeffs[-2] = np.zeros(coeffs[-2].shape)
+for k in args.file: # list_coeffs is args, 0, -1, -2
+  k = int(k)
+  coeffs[k] = np.zeros(coeffs[k].shape)  
+  
+#coeffs[0] = np.zeros(coeffs[0].shape)
+#coeffs[-1] = np.zeros(coeffs[-1].shape)
+#coeffs[-2] = np.zeros(coeffs[-2].shape)
 
 cA8,d8,d7,d6,d5,d4,d3 ,cD2, cD1 = coeffs
 
