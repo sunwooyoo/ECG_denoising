@@ -1,6 +1,7 @@
 #FIR
 import matplotlib.pyplot as plt
 import statistics
+import argparse
 import numpy as np
 import pandas as pd
 import scipy.io
@@ -31,7 +32,12 @@ def fir_filtered_data(data, h, shift = True):
     y = lfilter(h, [1.0], data) if shift else signal.filtfilt(h, [1.0], data)
     return y
 
-path = 'dataset/'
+parser = argparse.ArgumentParser(description='...')
+parser.add_argument('-order','--order', type = int)
+args = parser.parse_args()
+
+
+path = '/home/swyoo/bnn_ISOCC/mitbih_database/'
 csv_path = path + '115.csv'
 annotation_path = path + '115annotations.txt'
 df = pd.read_csv(csv_path,)
@@ -39,9 +45,9 @@ df = pd.read_csv(csv_path,)
 data = df["'MLII'"].values
 
 
-h1 = fir_bandpass_filter()
+h1 = fir_bandpass_filter(numtaps = args.order) # num_order is the order of filter. args
 bandpass_data = fir_filtered_data(data, h1, shift = False)
-h2 = fir_notch_filter()
+h2 = fir_notch_filter(numtaps = args.order)
 notch_data = fir_filtered_data(bandpass_data, h2, shift = False)
 
 mintime = 466388
