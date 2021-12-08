@@ -3,7 +3,6 @@ import statistics
 import numpy as np
 import pandas as pd
 import pywt
-import sys
 import argparse
 
 parser = argparse.ArgumentParser(description='...')
