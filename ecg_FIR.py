@@ -37,7 +37,7 @@ parser.add_argument('-order','--order', type = int)
 args = parser.parse_args()
 
 
-path = '../mitbih_database/'
+path = '../dataset/'
 csv_path = path + '115.csv'
 annotation_path = path + '115annotations.txt'
 df = pd.read_csv(csv_path,)
