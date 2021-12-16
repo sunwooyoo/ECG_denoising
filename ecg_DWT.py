@@ -10,7 +10,7 @@ parser.add_argument('-f','--file', nargs='+', help='<Required> Set flag', requir
 args = parser.parse_args()
 
 
-path = '../dataset/'
+path = './dataset/'
 csv_path = path + '115.csv'
 annotation_path = path + '115annotations.txt'
 df = pd.read_csv(csv_path,)
