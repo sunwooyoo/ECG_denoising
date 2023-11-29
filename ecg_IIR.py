@@ -36,8 +36,8 @@ def filtered_data(data,b,a):
 #filter order 2
 
 path = './dataset/'
-csv_path = path + '115.csv'
-annotation_path = path + '115annotations.txt'
+csv_path = path + '106.csv'
+annotation_path = path + '106annotations.txt'
 df = pd.read_csv(csv_path,)
 # Get data:
 data = df["'MLII'"].values
