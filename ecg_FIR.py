@@ -26,6 +26,8 @@ def fir_notch_filter(numtaps = 1000, lowcut =49, highcut = 51, fs = 360):
     h_ = signal.firwin(numtaps,[low, high])
     w, h = signal.freqz(h_, 1, worN=2000)
     plt.plot((fs * 0.5 / np.pi) * w, abs(h), label=None)
+    plt.tight_layout()
+    plt.savefig('fir_bandpass_notch_filter.png')
     return h_
 
 def fir_filtered_data(data, h, shift = True):
@@ -66,5 +68,6 @@ plt.ylabel('mV')
 plt.title("Denoised signal using filter")
 
 plt.tight_layout()
-plt.show()
+#plt.show()
+plt.savefig('denoised_signal.png')
 
