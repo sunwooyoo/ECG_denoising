@@ -32,9 +32,11 @@ for i in range(1, len(coeffs)):
     coeffs[i] = pywt.threshold(coeffs[i], threshold*max(coeffs[i]), 'soft')
     plt.plot(coeffs[i])
 
+coeffs_name = []
 for k in args.file: # list_coeffs is args, 0, -1, -2
   k = int(k)
-  coeffs[k] = np.zeros(coeffs[k].shape)  
+  coeffs[k] = np.zeros(coeffs[k].shape)
+  coeffs_name.append(k)
   
 #coeffs[0] = np.zeros(coeffs[0].shape)
 #coeffs[-1] = np.zeros(coeffs[-1].shape)
@@ -49,7 +51,7 @@ for i in range(0, len(coeffs)):
     plt.plot(coeffs[i])
 
 plt.tight_layout()
-plt.savefig('coeffs_'+str(args.file)+'.png')
+plt.savefig('coeffs_'+str(coeffs_name)+'.png')
 
 
 
@@ -73,7 +75,7 @@ plt.title("Denoised signal using wavelet")
 
 plt.tight_layout()
 
-plt.savefig('denoised_signal_wavelet_'+str(args.file)+'.png')
+plt.savefig('denoised_signal_wavelet_'+str(coeffs_name)+'.png')
 
 mintime = 467000-140
 maxtime = 467000 +139
