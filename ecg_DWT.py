@@ -48,6 +48,9 @@ for i in range(0, len(coeffs)):
     plt.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=None, hspace=1)
     plt.plot(coeffs[i])
 
+plt.tight_layout()
+plt.savefig('coeffs_'+str(args.file)+'.png')
+
 
 
 datarec = pywt.waverec(coeffs, w) #Multilevel reconstruction using waverec
@@ -69,7 +72,8 @@ plt.ylabel('mV')
 plt.title("Denoised signal using wavelet")
 
 plt.tight_layout()
-plt.show()
+
+plt.savefig('denoised_signal_wavelet_'+str(args.file)+'.png')
 
 mintime = 467000-140
 maxtime = 467000 +139
