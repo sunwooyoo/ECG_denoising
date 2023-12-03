@@ -32,11 +32,11 @@ for i in range(1, len(coeffs)):
     coeffs[i] = pywt.threshold(coeffs[i], threshold*max(coeffs[i]), 'soft')
     plt.plot(coeffs[i])
 
-coeffs_name = []
+coeffs_name = ''
 for k in args.file: # list_coeffs is args, 0, -1, -2
   k = int(k)
   coeffs[k] = np.zeros(coeffs[k].shape)
-  coeffs_name.append(k)
+  coeffs_name += str(k)
   
 #coeffs[0] = np.zeros(coeffs[0].shape)
 #coeffs[-1] = np.zeros(coeffs[-1].shape)
