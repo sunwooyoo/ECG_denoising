@@ -18,7 +18,7 @@ def fir_bandpass_filter(numtaps = 1000, lowcut = 0.4, highcut = 60, fs = 360):
     plt.plot((fs * 0.5 / np.pi) * w, abs(h), label=None)
     return h_
 
-def fir_notch_filter(numtaps = 1000, lowcut =49, highcut = 51, fs = 360):
+def fir_notch_filter(numtaps = 1000, lowcut =49, highcut = 51, fs = 360, order = None):
     nyq = fs/2
     low = lowcut/nyq
     high = highcut/nyq
@@ -27,7 +27,7 @@ def fir_notch_filter(numtaps = 1000, lowcut =49, highcut = 51, fs = 360):
     w, h = signal.freqz(h_, 1, worN=2000)
     plt.plot((fs * 0.5 / np.pi) * w, abs(h), label=None)
     plt.tight_layout()
-    plt.savefig('fir_bandpass_notch_filter.png')
+    plt.savefig('fir_bandpass_notch_filter_'+str(order)+'.png')
     return h_
 
 def fir_filtered_data(data, h, shift = True):
@@ -49,7 +49,7 @@ data = df["'MLII'"].values
 
 h1 = fir_bandpass_filter(numtaps = args.order) # num_order is the order of filter. args
 bandpass_data = fir_filtered_data(data, h1, shift = False)
-h2 = fir_notch_filter(numtaps = args.order)
+h2 = fir_notch_filter(numtaps = args.order, order = args.order)
 notch_data = fir_filtered_data(bandpass_data, h2, shift = False)
 
 mintime = 466388
@@ -69,5 +69,5 @@ plt.title("Denoised signal using filter")
 
 plt.tight_layout()
 #plt.show()
-plt.savefig('denoised_signal.png')
+plt.savefig('denoised_signal_'+str(args.order)+'.png')
 
