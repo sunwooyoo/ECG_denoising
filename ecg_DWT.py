@@ -11,8 +11,8 @@ args = parser.parse_args()
 
 
 path = './dataset/'
-csv_path = path + '106.csv'
-annotation_path = path + '106annotations.txt'
+csv_path = path + '119.csv'
+annotation_path = path + '119annotations.txt'
 df = pd.read_csv(csv_path,)
 # Get data:
 data = df["'MLII'"].values
